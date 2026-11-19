@@ -15,7 +15,7 @@ const app = express();
 // Allow requests from the React frontend
 
 const allowedOrigins = [
-  "http://localhost:5173",  // React + Vite frontend
+  "https://suviai-client.onrender.com",  // React + Vite frontend
   "http://127.0.0.1:5500",  // Live Server
   "http://localhost:5500",  // Live Server alternative
 ];
