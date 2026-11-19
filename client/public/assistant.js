@@ -121,7 +121,7 @@
       }
 
       const res = await fetch(
-        `http://localhost:8000/api/assistant/config/${userId}`,
+        `https://suviai-1.onrender.com/api/assistant/config/${userId}`,
       );
 
       const data = await res.json();
@@ -227,94 +227,6 @@
     speak(greeting);
   };
 
-  // toggle popup
-
-  // const SpeechRecognition =
-  //   window.SpeechRecognition || window.webkitSpeechRecognition;
-
-  // if (SpeechRecognition) {
-  //   const englishRecognition = new SpeechRecognition();
-  //   const hindiRecognition = new SpeechRecognition();
-
-  //   englishRecognition.lang = "en-IN";
-  //   hindiRecognition.lang = "hi-IN";
-
-  //   englishRecognition.continuous = false;
-  //   hindiRecognition.continuous = false;
-
-  //   englishRecognition.interimResults = false;
-  //   hindiRecognition.interimResults = false;
-
-  //   let recognitionResults = [];
-  //   let activeRecognitions = 0;
-  //   let hasSentMessage = false;
-
-  //   const finishRecognition = () => {
-  //     activeRecognitions--;
-
-  //     if (activeRecognitions === 0 && !hasSentMessage) {
-  //       hasSentMessage = true;
-
-  //       if (recognitionResults.length === 0) {
-  //         status.innerText = "Could not understand. Try again.";
-  //         wave.style.opacity = "0";
-  //         return;
-  //       }
-
-  //       // Prefer the result containing more recognized words.
-  //       recognitionResults.sort(
-  //         (a, b) => b.split(/\s+/).length - a.split(/\s+/).length,
-  //       );
-
-  //       const text = recognitionResults[0];
-
-  //       console.log("Recognized text:", text);
-
-  //       userText.textContent = "You: " + text;
-
-  //       sendMessage(text);
-  //     }
-  //   };
-
-  //   [englishRecognition, hindiRecognition].forEach((recognition) => {
-  //     recognition.onresult = (event) => {
-  //       const text =
-  //         event.results[event.results.length - 1][0].transcript.trim();
-
-  //       if (text) {
-  //         recognitionResults.push(text);
-  //       }
-  //     };
-
-  //     recognition.onerror = (event) => {
-  //       console.log("Recognition error:", event.error);
-  //     };
-
-  //     recognition.onend = finishRecognition;
-  //   });
-
-  //   mic.onclick = () => {
-  //     recognitionResults = [];
-  //     activeRecognitions = 2;
-  //     hasSentMessage = false;
-
-  //     wave.style.opacity = "1";
-  //     status.innerText = "Listening...";
-  //     userText.innerText = "";
-  //     aiText.innerText = "";
-
-  //     try {
-  //       englishRecognition.start();
-  //       hindiRecognition.start();
-  //     } catch (error) {
-  //       console.log("Recognition start error:", error);
-  //       status.innerText = "Could not start microphone.";
-  //       wave.style.opacity = "0";
-  //     }
-  //   };
-  // } else {
-  //   status.innerText = "Speech Recognition not supported";
-  // }
 
   // ===== NEW CODE START: Gemini audio recording =====
 
@@ -488,43 +400,13 @@
 
   // ===== NEW CODE END =====
 
-  // Send message to backend
-  // const sendMessage = async (text) => {
-  //   try {
-  //     status.innerText = "Thinking...";
-
-  //     const res = await fetch("http://localhost:8000/api/assistant/ask", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         message: text,
-  //         userId,
-  //       }),
-  //     });
-
-  //     const data = await res.json();
-  //     console.log("Assistant response:", data);
-
-  //     if (data.success) {
-  //       speak(data.aiResponse || data.response);
-  //     } else {
-  //       speak(data.message || "Sorry, something went wrong.");
-  //     }
-  //   } catch (error) {
-  //     console.log("Assistant server error:", error);
-  //     speak("AI server error");
-  //   }
-  // };
-
   // ===== CHANGED CODE START: Send message to backend =====
 
   const sendMessage = async (text, audioBase64 = null, mimeType = null) => {
     try {
       status.innerText = "Thinking...";
 
-      const res = await fetch("http://localhost:8000/api/assistant/ask", {
+      const res = await fetch("https://suviai-1.onrender.com/api/assistant/ask", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
