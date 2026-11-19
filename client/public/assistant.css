@@ -1,0 +1,505 @@
+/* toggle button */
+
+.suvi-btn {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 68px;
+  height: 68px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.suvi-btn img {
+  width: 45px;
+  height: 45px;
+  object-fit: contain;
+}
+
+/* popUp css */
+
+.suvi-popup {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+
+  width: 360px;
+  min-width: 360px;
+  max-width: 360px;
+
+  height: 500px;
+  min-height: 500px;
+  max-height: 500px;
+
+  border-radius: 38px;
+  overflow: hidden;
+
+  z-index: 999999;
+  display: none;
+
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.32);
+}
+
+.suvi-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.suvi-content {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 18px 20px 14px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suvi-top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.suvi-orb-wrap {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  margin-top: 2px;
+}
+
+.suvi-orb-glow {
+  position: absolute;
+  inset: 0;
+  transform: scale(1.8);
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.6;
+}
+
+.suvi-orb {
+  position: relative;
+  width: 118px;
+  height: 118px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.suvi-title {
+  margin-top: 14px;
+  font-size: 28px;
+  line-height: 1.1;
+  font-weight: 700;
+  text-align: center;
+}
+
+.suvi-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.suvi-status {
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.suvi-wave {
+  margin-top: 8px;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 34px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.suvi-wave.active {
+  opacity: 1;
+}
+.suvi-wave span {
+  width: 5px;
+  border-radius: 999px;
+  background-color: aqua;
+  animation: wave 1.2s infinite ease-in-out;
+}
+.suvi-wave span:nth-child(1) {
+  height: 14px;
+  animation-delay: 0s;
+}
+.suvi-wave span:nth-child(2) {
+  height: 28px;
+  animation-delay: 0.1s;
+}
+.suvi-wave span:nth-child(3) {
+  height: 16px;
+  animation-delay: 0.2s;
+}
+.suvi-wave span:nth-child(4) {
+  height: 34px;
+  animation-delay: 0.3s;
+}
+.suvi-wave span:nth-child(5) {
+  height: 20px;
+  animation-delay: 0.4s;
+}
+.suvi-wave span:nth-child(6) {
+  height: 14px;
+  animation-delay: 0.5s;
+}
+
+@keyframes wave {
+  0% {
+    opacity: 0.4;
+    transform: scaleY(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scaleY(0.8);
+  }
+}
+
+.suvi-user-text {
+  margin-top: 10px;
+  min-height: 20px;
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: center;
+  font-weight: 600;
+}
+
+.suvi-ai-text {
+  margin-top: 2px;
+  min-height: 18px;
+  font-size: 13px;
+  line-height: 1.4;
+  text-align: center;
+  opacity: 0.82;
+}
+
+.suvi-bottom {
+  position: relative;
+  width: 130px;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suvi-mic {
+  position: relative;
+  z-index: 2;
+
+  width: 74px;
+  height: 74px;
+
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+
+  color: white;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+
+  /* smooth shadow animation */
+  animation: micFloat 2.5s ease-in-out infinite;
+}
+
+.suvi-mic:hover {
+  transform: scale(1.06);
+}
+
+@keyframes micFloat {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.suvi-mic-icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+/* dark theme */
+.theme-dark {
+  background: #050816;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.theme-dark .suvi-overlay {
+  background: radial-gradient(
+    circle at top,
+    rgba(168, 85, 247, 0.18),
+    transparent 45%
+  );
+}
+
+.theme-dark .suvi-orb,
+.theme-dark .suvi-orb-glow {
+  background: linear-gradient(135deg, #4cc9ff, #7c3aed, #ec4899);
+}
+
+.theme-dark .suvi-title {
+  color: white;
+}
+
+.theme-dark .suvi-sub {
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.theme-dark .suvi-status {
+  color: #22e3a6;
+}
+
+.theme-dark .suvi-wave span {
+  background: #22e3a6;
+}
+.theme-dark .suvi-user-text {
+  color: white;
+}
+.theme-dark .suvi-ai-text {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* Dark theme button */
+
+.theme-dark .suvi-mic,
+.theme-dark.suvi-btn {
+  background: linear-gradient(135deg, #7c3aed, #4f8cff);
+
+  /* Large premium glow */
+  box-shadow:
+    0 0 35px rgba(124, 58, 237, 0.55),
+    0 0 90px rgba(79, 140, 255, 0.38),
+    0 0 140px rgba(124, 58, 237, 0.22);
+}
+
+/* light theme */
+
+.theme-light {
+  background: linear-gradient(135deg, #ffffff, #eef6ff);
+  border: 1px solid #dbeafe;
+}
+
+.theme-light .suvi-overlay {
+  background: radial-gradient(
+    circle at top,
+    rgba(59, 130, 246, 0.12),
+    transparent 45%
+  );
+}
+.theme-light .suvi-orb,
+.theme-light .suvi-orb-glow {
+  background: linear-gradient(135deg, #7dd3fc, #67e8f9, #f5d0fe);
+}
+
+.theme-light .suvi-title {
+  color: #081028;
+}
+.theme-light .suvi-sub {
+  color: #475569;
+}
+.theme-light .suvi-status {
+  color: #3b82f6;
+}
+.theme-light .suvi-wave span {
+  background: #60a5fa;
+}
+
+.theme-light .suvi-user-text {
+  color: #081028;
+}
+.theme-light .suvi-ai-text {
+  color: #475569;
+}
+
+/* Light theme Buttons */
+.theme-light .suvi-mic,
+.theme-light.suvi-btn {
+  background: linear-gradient(135deg, #60a5fa, #06b6d4);
+
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.38),
+    0 0 85px rgba(6, 182, 212, 0.28),
+    0 0 130px rgba(50, 130, 246, 0.16);
+}
+
+/* glass theme */
+
+
+.theme-glass {
+  background: rgba(0, 0, 0, .20);
+  backdrop-filter: blur(45px);
+  -webkit-backdrop-filter: blur(45px);
+  border: 1px solid rgba(255,255,255,.08)
+}
+
+.theme-glass .suvi-overlay {
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255,255, 0.05),
+    transparent 45%
+  );
+}
+.theme-glass .suvi-orb,
+.theme-glass .suvi-orb-glow {
+  background: linear-gradient(135deg, #bae6fd, #c4b5fd, #f5d0fe);
+}
+
+.theme-glass .suvi-title {
+  color: white;
+}
+.theme-glass .suvi-sub {
+  color: rgba(255,255,255,.75);
+}
+.theme-glass .suvi-status {
+  color: #a5f3fc;
+}
+.theme-glass .suvi-wave span {
+  background: #a5f3fc;
+}
+
+.theme-glass .suvi-user-text {
+  color: white;
+}
+.theme-glass .suvi-ai-text {
+  color: rgba(255, 255, 255, 0.72));
+}
+
+/* glass theme Buttons */
+.theme-glass .suvi-mic,
+.theme-glass.suvi-btn {
+  background: linear-gradient(135deg, #38bdf8, #0b5cf6);
+
+  box-shadow:
+    0 0 35px rgba(34, 211, 238, 0.34),
+    0 0 95px rgba(139, 92, 246, 0.28),
+    0 0 150px rgba(56, 189, 248, 0.18);
+}
+
+/* Neon theme */
+
+
+.theme-neon {
+  background: #03120d;
+  border: 1px solid rgba(16,185,129,.18)
+}
+
+.theme-neon .suvi-overlay {
+  background: radial-gradient(
+    circle at top,
+    rgba(16, 185,129, 0.18),
+    transparent 45%
+  );
+}
+.theme-neon .suvi-orb,
+.theme-neon .suvi-orb-glow {
+  background: linear-gradient(135deg, #34d399, #10b981, #14b8a6);
+}
+
+.theme-neon .suvi-title {
+  color: #ecfdf5;
+}
+.theme-neon .suvi-sub {
+  color: rgba(289,250,229,.72);
+}
+.theme-neon .suvi-status {
+  color: #6ee7b7;
+}
+.theme-neon .suvi-wave span {
+  background: #6ee7b7;
+}
+
+.theme-neon .suvi-user-text {
+  color: #ecfdf5;
+}
+.theme-neon .suvi-ai-text {
+  color: rgba(209,250, 229, 0.75));
+}
+
+/* noen theme Buttons */
+.theme-neon .suvi-mic,
+.theme-neon.suvi-btn {
+  background: linear-gradient(135deg, #10b981, #22c55e);
+
+  box-shadow:
+    0 0 38px rgba(16, 285, 129, 0.45),
+    0 0 100px rgba(34, 197, 94, 0.32),
+    0 0 160px rgba(16, 185, 129, 0.29);
+}
+
+@media(max-width:640px){
+  .suvi-popup{
+    width: 340px;
+    min-width: 340px;
+    max-width: 340px;
+
+    height: 560px;
+    min-height: 560px;
+    max-height: 540px;
+  
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 82px;
+
+    border-radius: 30px;
+  }
+  .suvi-btn{
+    width: 64px;
+    height: 64px;
+    right: 14px;
+    bottom: 14px;
+  }
+  .suvi-btn img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .suvi-title{
+    font-size: 26px;
+  }
+  .suvi-sub{
+    font-size: 13px;
+  }
+
+}
