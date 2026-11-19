@@ -12,7 +12,7 @@
 
   link.rel = "stylesheet";
 
-  link.href = "http://localhost:5173/assistant.css";
+  link.href = "https://suviai-client.onrender.com/assistant.css";
 
   document.head.appendChild(link);
 
@@ -72,7 +72,7 @@
 
         <div class="suvi-bottom">
             <button class="suvi-mic">
-                <img src="http://localhost:5173/mic.svg" alt="mic" width="100px" height="100px" class="suvi-mic-icon" />
+                <img src="https://suviai-client.onrender.com/mic.svg" alt="mic" width="100px" height="100px" class="suvi-mic-icon" />
             </button>
         </div>
 
@@ -89,7 +89,7 @@
 
   button.className = `suvi-btn theme-${theme}`;
   button.innerHTML = `
-    <img src="http://localhost:5173/suvi1.png"
+    <img src="https://suviai-client.onrender.com/suvi1.png"
     alt="suvi AI" class="suvi-btn-icon" />
 `;
 
