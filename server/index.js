@@ -15,24 +15,19 @@ const app = express();
 // Allow requests from the React frontend
 
 const allowedOrigins = [
-  "https://suviai-client.onrender.com",  // React + Vite frontend
-  "http://127.0.0.1:5500",  // Live Server
-  "http://localhost:5500",  // Live Server alternative
+  "https://suviai-client.onrender.com",
+  "http://127.0.0.1:5500",
+  "http://localhost:5500",
 ];
 
 app.use(
   cors({
-    origin:(origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error(`CORS blocked origin: ${origin}`));
-      }
-    },
+    origin: allowedOrigins,
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-
 // Middleware
 // ===== CHANGED CODE START =====
 app.use(express.json({ limit: "10mb" }));
